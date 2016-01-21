@@ -1,0 +1,28 @@
+{
+	"options":{
+		"searchSelection":"custom",
+		"pages":1,
+		"searchQuery":"",
+		"getScreenshots":true,
+		"waitDuration":500
+	},
+	"custom":{
+		"baseUrl":"http://127.0.0.1:9003/",
+		"url":"http://127.0.0.1:9003/pages.html",
+		"resultSelector":{
+			"selector":".pages ul li",
+			"selectorChildren":[
+				{
+					"label":"url",
+					"selector":"a",
+					"type":"href"
+				},
+				{
+					"label":"name",
+					"selector":"a",
+					"type":"text"
+				}
+			]
+		}
+	}
+}
