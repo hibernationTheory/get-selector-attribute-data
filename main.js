@@ -62,10 +62,18 @@ function main() {
 	var links = [];
 	var counter = 0;
 	var searchResultAmounts = 0;
-	var outputFileName = 'output.json';
+	// Checking to see the script is currently a node module dependency.
+	// If so will be looking for configuration files at the parentDir.
+	// Pretty crude way of doing it.
+	var dirPrepend = '';
+	var currentDir = fs.absolute('.');
+	if (currentDir.indexOf('node_modules') > -1) {
+		dirPrepend = '../';
+	}
 
+	var outputFileName = dirPrepend + 'casperOutput.json';
 	// get the config data
-	var configFileName = 'config.json';
+	var configFileName = dirPrepend + 'casperConfig.json';
 	var configData = fs.read(configFileName);
 	configData = JSON.parse(configData);
 
