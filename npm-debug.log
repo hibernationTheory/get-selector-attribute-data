@@ -1,0 +1,90 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', '--force' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.5
+4 warn using --force I sure hope you know what you are doing.
+5 verbose publish [ '.' ]
+6 silly cache add args [ '.', null ]
+7 verbose cache add spec .
+8 silly cache add parsed spec { raw: '.',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: '.',
+8 silly cache add   spec: '/Users/enginarslan/Documents/workspace/learning/phantomjs_casperjs/casperjs/getLinks',
+8 silly cache add   type: 'directory' }
+9 verbose addLocalDirectory /Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package.tgz not in flight; packing
+10 verbose tar pack [ '/Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package.tgz',
+10 verbose tar pack   '/Users/enginarslan/Documents/workspace/learning/phantomjs_casperjs/casperjs/getLinks' ]
+11 verbose tarball /Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package.tgz
+12 verbose folder /Users/enginarslan/Documents/workspace/learning/phantomjs_casperjs/casperjs/getLinks
+13 info prepublish get-selector-attribute-data@1.0.0
+14 verbose addLocalTarball adding from inside cache /Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package.tgz
+15 silly cache afterAdd get-selector-attribute-data@1.0.0
+16 verbose afterAdd /Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package/package.json not in flight; writing
+17 verbose afterAdd /Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package/package.json written
+18 silly publish { name: 'get-selector-attribute-data',
+18 silly publish   version: '1.0.0',
+18 silly publish   description: 'Collects the attribute values for given selectors from a starting page',
+18 silly publish   main: 'main.js',
+18 silly publish   scripts:
+18 silly publish    { test: 'echo "Error: no test specified" && exit 1',
+18 silly publish      main: 'casperjs index.js' },
+18 silly publish   author: { name: 'hibernationtheory@gmail.com' },
+18 silly publish   license: 'ISC',
+18 silly publish   dependencies: { casperjs: '^1.1.0-beta3', phantomjs: '^1.9.19' },
+18 silly publish   readme: '# Get Selector Attribute Data\n\nGiven a starting url (say "http://google.com") the script can fetch the target attribute value (say \'href\') for given selector (like \'a\') and returns the collected results in a output.json file. It is built with search engines in mind, so the configuration file can first submit a search query and then get the data collection. But it works equally well with a non-search engine page (search query submission is not mandatory).\n\n## How to Use\n\n- Run `npm install` to get the dependencies\n- Configure the `config.json` according to your needs.\n- Execute the script with `npm run main`\n\n## TO DO\n\n- Include an actionable configuration file. (The current one points to an arbitrary locally running project)\n- Include more examples for the configuration options.\n- Make the output path to be configurable.\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: 'c4ccab6c01945a0e87c8335e22009b1d4160a3bf',
+18 silly publish   _id: 'get-selector-attribute-data@1.0.0',
+18 silly publish   _shasum: 'ef4009f3db47e1f39e9ce01fade0e164d743dd21',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name get-selector-attribute-data
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/get-selector-attribute-data
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/enginarslan/.npm/get-selector-attribute-data/1.0.0/package.tgz
+26 verbose request uri https://registry.npmjs.org/get-selector-attribute-data
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 4:39:31 PM
+29 verbose request using bearer token for auth
+30 verbose request id f5ee6c59c6b0674f
+31 http request PUT https://registry.npmjs.org/get-selector-attribute-data
+32 http 403 https://registry.npmjs.org/get-selector-attribute-data
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '128',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Thu, 21 Jan 2016 21:39:32 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-ord1728-ORD',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1453412371.609409,VS0,VE761' }
+34 verbose request invalidating /Users/enginarslan/.npm/registry.npmjs.org/get-selector-attribute-data on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: "You cannot publish over the previously published version 1.0.0. Try bumping the version to 2.0.0" : get-selector-attribute-data
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:354:22)
+36 verbose stack     at Request.emit (events.js:110:17)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+36 verbose stack     at Request.emit (events.js:129:20)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+36 verbose stack     at IncomingMessage.emit (events.js:129:20)
+36 verbose stack     at _stream_readable.js:908:16
+36 verbose stack     at process._tickCallback (node.js:355:11)
+37 verbose statusCode 403
+38 verbose pkgid get-selector-attribute-data
+39 verbose cwd /Users/enginarslan/Documents/workspace/learning/phantomjs_casperjs/casperjs/getLinks
+40 error Darwin 14.5.0
+41 error argv "node" "/usr/local/bin/npm" "publish" "--force"
+42 error node v0.12.5
+43 error npm  v2.11.2
+44 error code E403
+45 error "You cannot publish over the previously published version 1.0.0. Try bumping the version to 2.0.0" : get-selector-attribute-data
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
