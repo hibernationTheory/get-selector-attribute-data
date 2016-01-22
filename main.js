@@ -68,10 +68,10 @@ function main(cb) {
 	// Checking to see the script is currently a node module dependency.
 	// If so will be looking for configuration files at the parentDir.
 	// Pretty crude way of doing it.
-	var dirPrepend = '';
+	var dirPrepend = './';
 	var currentDir = fs.absolute('.');
 	if (currentDir.indexOf('node_modules') > -1) {
-		dirPrepend = '../';
+		dirPrepend = '../../';
 	}
 
 	var outputFileName = dirPrepend + 'casperOutput.json';
@@ -118,7 +118,7 @@ function main(cb) {
 				var result = this.evaluate(getSelectorAttrValue, resultSelector, resultType);
 				links = links.concat(result);
 				if (getScreenshots) {
-					this.capture('./images/screen_capture_' + counter + '.png');
+					this.capture(dirPrepend + 'images/screen_capture_' + counter + '.png');
 				}
 
 				if (nextButton) {
