@@ -128,14 +128,13 @@ function main(configFileName, cb) {
 		}
 		var jsonResult = JSON.stringify(results, null, '\t');
 		cb(results);
-		this.exit();
 	});
 }
 
 function promiseMain(configFileName) {
 	var deferred = Q.defer();
-	main(configFileName, function(y) {
-		deferred.resolve(y);
+	main(configFileName, function(results) {
+		deferred.resolve(results);
 	});
 	return deferred.promise;
 }
