@@ -1,2 +1,5 @@
 var main = require('./main.js');
-main();
+
+main().then(function(x) {
+	console.log(JSON.stringify(x));
+});

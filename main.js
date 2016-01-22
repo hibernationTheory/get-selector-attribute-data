@@ -1,6 +1,8 @@
 var require = patchRequire(require);
 
-function main() {
+var Q = require('q');
+
+function main(cb) {
 
 	// import modules and install event listeners
 	var casper = require('casper').create({
@@ -12,6 +14,7 @@ function main() {
 	});
 	var fs = require('fs');
 	var utils = require('utils');
+	
 
 	casper.on('error', function(message) {
 	    //this.echo('error: ' + message);
@@ -135,12 +138,20 @@ function main() {
 			results = {"baseUrl":baseUrl, "links":links};
 		}
 		var jsonResult = JSON.stringify(results, null, '\t');
-		console.log(jsonResult);
 		if (outputFileName) {
 			fs.write(outputFileName, jsonResult, 'w');
 		}
+		cb(results);
 		this.exit();
 	});
 }
 
-module.exports = main;
+function promiseMain() {
+	var deferred = Q.defer();
+	main(function(y) {
+		deferred.resolve(y);
+	});
+	return deferred.promise;
+}
+
+module.exports = promiseMain;

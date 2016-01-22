@@ -5,12 +5,13 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "main":"casperjs index.js"
+    "main": "casperjs index.js"
   },
   "author": "hibernationtheory@gmail.com",
   "license": "ISC",
   "dependencies": {
     "casperjs": "^1.1.0-beta3",
-    "phantomjs": "^1.9.19"
+    "phantomjs": "^1.9.19",
+    "q": "^1.4.1"
   }
 }
