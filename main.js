@@ -2,8 +2,7 @@ var require = patchRequire(require);
 
 var Q = require('q');
 
-function main(cb) {
-
+function main(configFileName, cb) {
 	// import modules and install event listeners
 	var casper = require('casper').create({
 		"viewportSize":
@@ -65,18 +64,6 @@ function main(cb) {
 	var links = [];
 	var counter = 0;
 	var searchResultAmounts = 0;
-	// Checking to see the script is currently a node module dependency.
-	// If so will be looking for configuration files at the parentDir.
-	// Pretty crude way of doing it.
-	var dirPrepend = './';
-	var currentDir = fs.absolute('.');
-	if (currentDir.indexOf('node_modules') > -1) {
-		dirPrepend = '../../';
-	}
-
-	var outputFileName = dirPrepend + 'casperOutput.json';
-	// get the config data
-	var configFileName = dirPrepend + 'casperConfig.json';
 	var configData = fs.read(configFileName);
 	configData = JSON.parse(configData);
 
@@ -117,9 +104,11 @@ function main(cb) {
 				//this.echo('Opening the page: ' + this.getCurrentUrl());
 				var result = this.evaluate(getSelectorAttrValue, resultSelector, resultType);
 				links = links.concat(result);
+				/*
 				if (getScreenshots) {
 					this.capture(dirPrepend + 'images/screen_capture_' + counter + '.png');
 				}
+				*/
 
 				if (nextButton) {
 					this.click(nextButton);
@@ -138,17 +127,14 @@ function main(cb) {
 			results = {"baseUrl":baseUrl, "links":links};
 		}
 		var jsonResult = JSON.stringify(results, null, '\t');
-		if (outputFileName) {
-			fs.write(outputFileName, jsonResult, 'w');
-		}
 		cb(results);
 		this.exit();
 	});
 }
 
-function promiseMain() {
+function promiseMain(configFileName) {
 	var deferred = Q.defer();
-	main(function(y) {
+	main(configFileName, function(y) {
 		deferred.resolve(y);
 	});
 	return deferred.promise;
