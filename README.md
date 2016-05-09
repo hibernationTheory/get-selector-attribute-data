@@ -6,7 +6,7 @@ Given a starting url (say "http://google.com") the script can fetch the target a
 
 - Run `npm install` to get the dependencies
 - Configure the `config.json` according to your needs.
-- Execute the script with `npm run main`
+- Execute the script with `npm start`
 
 ## TO DO
 
