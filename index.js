@@ -1,4 +1,6 @@
 var casper = require('casper').create();
+// uncomment below for outputting the data to disk
+//var fs = require('fs');
 var main = require('./main.js');
 var fs = require('fs');
 

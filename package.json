@@ -2,10 +2,8 @@
   "name": "get-selector-attribute-data",
   "version": "1.0.4",
   "description": "Collects the attribute values for given selectors from a starting page",
-  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "main": "casperjs index.js"
+    "start": "casperjs index.js"
   },
   "repository": {
     "type": "git",
