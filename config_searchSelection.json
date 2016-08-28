@@ -1,0 +1,83 @@
+{
+		"bing":{
+		"url":"http://www.bing.com/",
+		"inputSelector":".b_searchbox",
+		"formSelector":"form",
+		"nextButton":"[title^='Next']",
+		"resultAmountSelector":".sb_count",
+		"resultSelector":{
+			"selector":".b_algo",
+			"selectorChildren":[
+				{
+					"label":"link",
+					"selector":"h2 a",
+					"type":"href"
+				},
+				{
+					"label":"name",
+					"selector":"h2 a",
+					"type":"text"
+				},
+				{
+					"label":"description",
+					"selector":".b_caption p",
+					"type":"text"
+				}
+			]
+		}
+	},
+	"google":{
+		"url":"http://www.google.ca/",
+		"inputSelector":"input.gsfi",
+		"formSelector":"form",
+		"nextButton":".b[style='text-align:left'] a",
+		"resultAmountSelector":"#resultStats",
+		"resultSelector":{
+			"selector":"#search ol .g",
+			"selectorChildren":[
+				{
+					"label":"link",
+					"selector":"h3 a",
+					"type":"href"
+				},
+				{
+					"label":"name",
+					"selector":"h3 a",
+					"type":"text"
+				},
+				{
+					"label":"description",
+					"selector":".s .st",
+					"type":"text"
+				}
+			]
+		}
+	},
+	"yandex":{
+		"url":"https://www.yandex.com/",
+		"inputSelector":"input",
+		"formSelector":"form",
+		"nextButton":"a.pager__item_kind_next",
+		"resultAmountSelector":"",
+		"resultSelector":{
+			"selector":".serp-list .serp-item",
+			"selectorChildren":[
+				{
+					"label":"link",
+					"selector":"h2 a",
+					"type":"href"
+				},
+				{
+					"label":"name",
+					"selector":"h2 a",
+					"type":"text"
+				},
+				{
+					"label":"description",
+					"selector":".serp-item__text",
+					"type":"text"
+				}
+			]
+		}
+	}
+}

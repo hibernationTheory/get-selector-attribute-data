@@ -1,8 +1,7 @@
 var require = patchRequire(require);
-
 var Q = require('q');
 
-function main(configFileName, cb) {
+function main(configFileName, configSearchFileName, cb) {
 	// import modules and install event listeners
 	var casper = require('casper').create({
 		"viewportSize":
@@ -13,7 +12,6 @@ function main(configFileName, cb) {
 	});
 	var fs = require('fs');
 	var utils = require('utils');
-	
 
 	casper.on('error', function(message) {
 	    //this.echo('error: ' + message);
@@ -65,14 +63,21 @@ function main(configFileName, cb) {
 	var counter = 0;
 	var searchResultAmounts = 0;
 	var configData = fs.read(configFileName);
+	var configSearchData = fs.read(configSearchFileName);
+
 	configData = JSON.parse(configData);
+	configSearchData = JSON.parse(configSearchData);
+
+	var options = casper.cli.options;
+
+	var searchQuery = options.search || configData["options"]["searchQuery"];
+	var searchSelection = options.source || configData["options"]["searchSelection"];
 
 	var amount = configData["options"]["pages"];
 	var getScreenshots = configData["options"]["getScreenshots"] || false;
-	var searchQuery = configData["options"]["searchQuery"];
 	var waitDuration = configData["options"]["waitDuration"];
-	var searchSelection = configData["options"]["searchSelection"];
-	var searchConfig = configData[searchSelection];
+	
+	var searchConfig = configSearchData[searchSelection];
 	var url = searchConfig["url"];
 	var inputSelector = searchConfig["inputSelector"];
 	var formSelector = searchConfig["formSelector"];
@@ -101,14 +106,13 @@ function main(configFileName, cb) {
 	casper.then(function() {
 		this.repeat(amount, function() {
 			this.wait(waitDuration, function() {
-				//this.echo('Opening the page: ' + this.getCurrentUrl());
+				this.echo('Opening the page: ' + this.getCurrentUrl());
 				var result = this.evaluate(getSelectorAttrValue, resultSelector, resultType);
 				links = links.concat(result);
-				/*
+				
 				if (getScreenshots) {
-					this.capture(dirPrepend + 'images/screen_capture_' + counter + '.png');
+					this.capture('images/screen_capture_' + counter + '.png');
 				}
-				*/
 
 				if (nextButton) {
 					this.click(nextButton);
@@ -131,9 +135,9 @@ function main(configFileName, cb) {
 	});
 }
 
-function promiseMain(configFileName) {
+function promiseMain(configFileName, configSearchFileName) {
 	var deferred = Q.defer();
-	main(configFileName, function(results) {
+	main(configFileName, configSearchFileName, function(results) {
 		deferred.resolve(results);
 	});
 	return deferred.promise;
