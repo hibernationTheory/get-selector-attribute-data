@@ -52,32 +52,5 @@
 				}
 			]
 		}
-	},
-	"yandex":{
-		"url":"https://www.yandex.com/",
-		"inputSelector":"input",
-		"formSelector":"form",
-		"nextButton":"a.pager__item_kind_next",
-		"resultAmountSelector":"",
-		"resultSelector":{
-			"selector":".serp-list .serp-item",
-			"selectorChildren":[
-				{
-					"label":"link",
-					"selector":"h2 a",
-					"type":"href"
-				},
-				{
-					"label":"name",
-					"selector":"h2 a",
-					"type":"text"
-				},
-				{
-					"label":"description",
-					"selector":".serp-item__text",
-					"type":"text"
-				}
-			]
-		}
 	}
 }
